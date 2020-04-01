@@ -1,11 +1,10 @@
 import React from 'react';
-import {Switch, Route, NavLink, Link} from 'react-router-dom';
-import './App.css';
-import HomeContainer from './containers/HomeContainer';
-import Header from './components/Header/Header';
-import GlobalStyle from "./globalyStyle";
-import StocksContainer from "./containers/StocksContainer";
-import {Navigation} from "./components/styledComponents";
+import {Switch, Route, NavLink} from 'react-router-dom';
+import GlobalStyle from '../globalyStyle';
+import StocksContainer from './StocksContainer/StocksContainer';
+import HomeContainer from './HomeContainer/HomeContainer';
+import Header from '../components/Header/Header';
+import {Navigation} from '../components/styledComponents';
 
 function App() {
     return (

@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import {createStructuredSelector} from "reselect";
-import {getStocks} from "../actions";
-import {connect} from "react-redux";
-import {selectStocks} from "../selectors";
-import StockTable from "../../components/StockTable/StockTable";
+import {createStructuredSelector} from 'reselect';
+import {getStocks} from '../actions';
+import {connect} from 'react-redux';
+import {selectGenericLoadingCalls, selectStocks} from '../selectors';
+import StockTable from '../../components/StockTable/StockTable';
+import {Loader} from '../../components/styledComponents';
 
 function StocksContainer(props) {
-    const { stocks } = props;
-
+    const{stocks, genericLoadingCalls} = props;
     useEffect(() => {
             if(isEmpty(stocks)) {
                 props.getStocks();
@@ -18,20 +18,24 @@ function StocksContainer(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []);
 
-  return (
-    <>
-      <h2>Stocks</h2>
-        <StockTable stocks={stocks}/>
-    </>
-  );
+    if (isEmpty(stocks) && genericLoadingCalls !== 0) return <Loader>Retreiving your stocks... ⏰</Loader>;
+
+    return (
+        <>
+            <h2>Stocks</h2>
+            <StockTable stocks={stocks}/>
+        </>
+    );
 }
 
 StocksContainer.propTypes = {
     stocks: PropTypes.array,
+    genericLoadingCalls: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({
     stocks: selectStocks,
+    genericLoadingCalls: selectGenericLoadingCalls
 });
 
 const mapDispatchToProps = dispatch => ({

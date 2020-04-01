@@ -4,10 +4,11 @@ import isEmpty from 'lodash/isEmpty';
 import {createStructuredSelector} from "reselect";
 import {getProfile} from "../actions";
 import {connect} from "react-redux";
-import {selectProfileName} from "../selectors";
+import {selectGenericLoadingCalls, selectProfileName} from "../selectors";
+import {Loader} from '../../components/styledComponents';
 
 function HomeContainer(props) {
-    const { profileName } = props;
+    const { profileName, genericLoadingCalls } = props;
 
     useEffect(() => {
         if(isEmpty(profileName)) props.getProfile();
@@ -15,19 +16,23 @@ function HomeContainer(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []);
 
-  return (
-    <>
-      <h2>Welcome {profileName}</h2>
-    </>
-  );
+    if (isEmpty(profileName) && genericLoadingCalls !== 0) return <Loader>Loading... ⏰</Loader>;
+
+    return (
+        <>
+            <h2>Welcome {profileName}</h2>
+        </>
+    );
 }
 
 HomeContainer.propTypes = {
     profile: PropTypes.string,
+    genericLoadingCalls: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({
     profileName: selectProfileName,
+    genericLoadingCalls: selectGenericLoadingCalls,
 });
 
 const mapDispatchToProps = dispatch => ({

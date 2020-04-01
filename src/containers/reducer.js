@@ -1,9 +1,10 @@
-import {GET_PROFILE_SUCCESS, GET_STOCKS_SUCCESS} from "./constants";
+import {CLEAR_GENERIC_LOADING, GET_PROFILE_SUCCESS, GET_STOCKS_SUCCESS, SET_GENERIC_LOADING} from "./constants";
 
 const initialState = {
   profile: {},
   news: {},
   stocks: [],
+  genericLoadingCalls: 0
 };
 
 export default (state = initialState, action) => {
@@ -12,6 +13,10 @@ export default (state = initialState, action) => {
       return {...state, profile: action.payload};
     case GET_STOCKS_SUCCESS:
       return {...state, stocks: action.payload};
+    case SET_GENERIC_LOADING:
+      return {...state, genericLoadingCalls: state.genericLoadingCalls + 1};
+    case CLEAR_GENERIC_LOADING:
+      return {...state, genericLoadingCalls: state.genericLoadingCalls - 1};
     default:
       return state
   }

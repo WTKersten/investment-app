@@ -14,3 +14,10 @@ export const Navigation = styled.div`
         content: " 🍀‍";
     }
 `;
+
+
+export const Loader = styled.span`
+    color: #E6AF2E;
+    font-size: 18px;
+    margin-top: 16px;
+`;
