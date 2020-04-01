@@ -1,4 +1,11 @@
-import {GET_PROFILE, GET_PROFILE_ERROR, GET_PROFILE_SUCCESS} from "./constants";
+import {
+    GET_PROFILE,
+    GET_PROFILE_ERROR,
+    GET_PROFILE_SUCCESS,
+    GET_STOCKS,
+    GET_STOCKS_ERROR,
+    GET_STOCKS_SUCCESS
+} from "./constants";
 
 export function getProfile() {
     return {
@@ -18,3 +25,20 @@ export function getProfileError(response) {
     }
 }
 
+export function getStocks() {
+    return {
+        type: GET_STOCKS
+    }
+}
+export function getStocksSuccess({products}) {
+    return {
+        type: GET_STOCKS_SUCCESS,
+        payload: products,
+    }
+}
+export function getStocksError(response) {
+    return {
+        type: GET_STOCKS_ERROR,
+        payload: response,
+    }
+}
