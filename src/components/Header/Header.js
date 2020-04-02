@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-const HeaderWrapper = styled.header`
-    margin-top: 100px;
-`;
+import {HeaderWrapper} from './styled';
+
 
 function Header() {
     return(

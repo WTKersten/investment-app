@@ -1,21 +1,7 @@
 import React, {useCallback, useState} from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {Button, Table, Input} from 'reactstrap';
-
-const TableX = styled(Table)`
-    color: #ffffff;
-`;
-
-const TableHead = styled.thead`
-    background-color: #BEB7A4;
-`;
-
-const TableHeader = styled.th`
-    text-align: left;
-    padding-top: 16px;
-    padding-bottom: 12px;
-`;
+import {Button, Input} from 'reactstrap';
+import {TableHead, TableHeader, TableX} from './styled';
 
 const emptyStockObject = {isin: '', name: '', closePrice: '', productType: ''};
 
