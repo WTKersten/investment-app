@@ -41,6 +41,7 @@ function StockTable({stocks}) {
 
     return(
         <>
+            <h2>Stocks</h2>
             <Table>
                 <TableHead>
                     <tr>

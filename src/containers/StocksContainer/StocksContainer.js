@@ -11,9 +11,9 @@ import {Loader} from '../../components/styledComponents';
 function StocksContainer(props) {
     const{stocks, genericLoadingCalls} = props;
     useEffect(() => {
-            if(isEmpty(stocks)) {
-                props.getStocks();
-            }
+        if(isEmpty(stocks)) {
+            props.getStocks();
+        }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []);
@@ -22,7 +22,6 @@ function StocksContainer(props) {
 
     return (
         <>
-            <h2>Stocks</h2>
             <StockTable stocks={stocks}/>
         </>
     );
