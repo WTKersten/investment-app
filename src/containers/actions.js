@@ -8,50 +8,38 @@ import {
     GET_STOCKS_SUCCESS, SET_GENERIC_LOADING
 } from "./constants";
 
-export function getProfile() {
-    return {
-        type: GET_PROFILE
-    }
-}
-export function getProfileSuccess(response) {
-    return {
+export const getProfile = ()  => ({
+    type: GET_PROFILE
+});
+
+export const getProfileSuccess = response => ({
         type: GET_PROFILE_SUCCESS,
         payload: response,
-    }
-}
-export function getProfileError(response) {
-    return {
-        type: GET_PROFILE_ERROR,
-        payload: response,
-    }
-}
+});
 
-export function getStocks() {
-    return {
+export const getProfileError = response => ({
+    type: GET_PROFILE_ERROR,
+    payload: response,
+});
+
+export const getStocks = () => ({
         type: GET_STOCKS
-    }
-}
-export function getStocksSuccess({products}) {
-    return {
+});
+
+export const getStocksSuccess = ({products}) => ({
         type: GET_STOCKS_SUCCESS,
         payload: products,
-    }
-}
-export function getStocksError(response) {
-    return {
+});
+
+export const getStocksError = response => ({
         type: GET_STOCKS_ERROR,
         payload: response,
-    }
-}
+});
 
-export function setGenericLoading() {
-    return {
+export const setGenericLoading = () => ({
         type: SET_GENERIC_LOADING
-    }
-}
+});
 
-export function clearGenericLoading() {
-    return {
+export const clearGenericLoading = () => ({
         type: CLEAR_GENERIC_LOADING
-    }
-}
+});

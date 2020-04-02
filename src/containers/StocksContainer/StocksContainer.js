@@ -2,11 +2,12 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import {createStructuredSelector} from 'reselect';
-import {getStocks} from '../actions';
+import {getProfile, getStocks} from '../actions';
 import {connect} from 'react-redux';
 import {selectGenericLoadingCalls, selectStocks} from '../selectors';
 import StockTable from '../../components/StockTable/StockTable';
 import {Loader} from '../../components/styledComponents';
+import {bindActionCreators} from 'redux';
 
 function StocksContainer(props) {
     const{stocks, genericLoadingCalls} = props;
@@ -37,9 +38,9 @@ const mapStateToProps = createStructuredSelector({
     genericLoadingCalls: selectGenericLoadingCalls
 });
 
-const mapDispatchToProps = dispatch => ({
-    getStocks: () => dispatch(getStocks()),
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+    getStocks,
+}, dispatch);
 
 const withConnect = connect(
     mapStateToProps,

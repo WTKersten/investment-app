@@ -6,10 +6,10 @@ import {getProfile} from "../actions";
 import {connect} from "react-redux";
 import {selectGenericLoadingCalls, selectProfileName} from "../selectors";
 import {Loader} from '../../components/styledComponents';
+import {bindActionCreators} from 'redux';
 
 function HomeContainer(props) {
     const { profileName, genericLoadingCalls } = props;
-
     useEffect(() => {
         if(isEmpty(profileName)) props.getProfile();
     },
@@ -35,9 +35,9 @@ const mapStateToProps = createStructuredSelector({
     genericLoadingCalls: selectGenericLoadingCalls,
 });
 
-const mapDispatchToProps = dispatch => ({
-    getProfile: () => dispatch(getProfile()),
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+        getProfile,
+    }, dispatch);
 
 const withConnect = connect(
     mapStateToProps,
