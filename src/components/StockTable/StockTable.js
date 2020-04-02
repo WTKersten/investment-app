@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {Button, Table, Input} from 'reactstrap';
@@ -17,21 +17,23 @@ const TableHeader = styled.th`
     padding-bottom: 12px;
 `;
 
+const emptyStockObject = {isin: '', name: '', closePrice: '', productType: ''};
 
 function StockTable({stocks}) {
-    const stockObj = {isin: '', name: '', closePrice: '', productType: ''};
 
     const [stockArr, setStockArr] = useState(stocks);
-    const [newStock, setNewStock] = useState(stockObj);
+    const [newStock, setNewStock] = useState(emptyStockObject);
 
-    const handleClick = () => {
+    const handleClickAdd = useCallback(() => {
         setStockArr(stockArr => [...stockArr, newStock]);
-        setNewStock(stockObj);
-    };
+        setNewStock(emptyStockObject);
+    }, [newStock]);
 
-    const handleChange = ({ target }) => {
+
+    const handleChange = useCallback(({ target }) => {
         setNewStock({...newStock, [target.name]: target.value});
-    };
+    }, [newStock]);
+
 
     return(
         <>
@@ -62,7 +64,7 @@ function StockTable({stocks}) {
                     </tr>
                 </tbody>
             </TableX>
-            <Button primary onClick={handleClick}>Add</Button>
+            <Button primary onClick={handleClickAdd}>Add</Button>
         </>
     )
 }

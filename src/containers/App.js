@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route, NavLink} from 'react-router-dom';
-import GlobalStyle from '../globalyStyle';
+import GlobalStyle from '../globalStyle';
 import StocksContainer from './StocksContainer/StocksContainer';
 import HomeContainer from './HomeContainer/HomeContainer';
 import Header from '../components/Header/Header';
