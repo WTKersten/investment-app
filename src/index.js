@@ -7,6 +7,7 @@ import configureStore, { sagaMiddleware } from './store';
 import saga from './saga';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <BrowserRouter>

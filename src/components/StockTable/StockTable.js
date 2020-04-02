@@ -1,16 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {Button} from '../styledComponents';
+import {Button, Table, Input} from 'reactstrap';
 
-const Table = styled.table`
-    width: 100%;
-    border-collapse: collapse;
-
-    th, td {
-        padding-left: 8px;
-        border: solid 1px #E0E2DB;
-    }
+const TableX = styled(Table)`
+    color: #ffffff;
 `;
 
 const TableHead = styled.thead`
@@ -42,7 +36,7 @@ function StockTable({stocks}) {
     return(
         <>
             <h2>Stocks</h2>
-            <Table>
+            <TableX>
                 <TableHead>
                     <tr>
                         <TableHeader>ISIN</TableHeader>
@@ -61,13 +55,13 @@ function StockTable({stocks}) {
                         </tr>
                     ))}
                     <tr>
-                        <td><input type="text" name="isin" value={newStock.isin} onChange={handleChange} /></td>
-                        <td><input type="text" name="name" value={newStock.name} onChange={handleChange}/></td>
-                        <td><input type="text" name="closePrice" value={newStock.closePrice} onChange={handleChange}/></td>
-                        <td><input type="text" name="productType" value={newStock.productType} onChange={handleChange}/></td>
+                        <td><Input type="text" name="isin" value={newStock.isin} onChange={handleChange} /></td>
+                        <td><Input type="text" name="name" value={newStock.name} onChange={handleChange}/></td>
+                        <td><Input type="text" name="closePrice" value={newStock.closePrice} onChange={handleChange}/></td>
+                        <td><Input type="text" name="productType" value={newStock.productType} onChange={handleChange}/></td>
                     </tr>
                 </tbody>
-            </Table>
+            </TableX>
             <Button primary onClick={handleClick}>Add</Button>
         </>
     )
