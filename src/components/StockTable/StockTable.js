@@ -1,18 +1,19 @@
 import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 import {Button, Input} from 'reactstrap';
 import {TableHead, TableHeader, TableX} from './styled';
 
-const emptyStockObject = {isin: '', name: '', closePrice: '', productType: ''};
+const getEmptyStockObject = () => ({isin: '', name: '', closePrice: '', productType: '', id: uuid()});
 
 function StockTable({stocks}) {
 
     const [stockArr, setStockArr] = useState(stocks);
-    const [newStock, setNewStock] = useState(emptyStockObject);
+    const [newStock, setNewStock] = useState(getEmptyStockObject());
 
     const handleClickAdd = useCallback(() => {
         setStockArr(stockArr => [...stockArr, newStock]);
-        setNewStock(emptyStockObject);
+        setNewStock(getEmptyStockObject());
     }, [newStock]);
 
 
