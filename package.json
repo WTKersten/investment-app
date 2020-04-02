@@ -36,7 +36,14 @@
     "start": "run-p mock-api dev"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   },
   "browserslist": {
     "production": [
@@ -51,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-react-hooks": "^3.0.0",
     "prop-types": "latest"
   }
 }
