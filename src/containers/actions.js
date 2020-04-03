@@ -1,5 +1,5 @@
 import {
-    CLEAR_GENERIC_LOADING,
+    CLEAR_GENERIC_LOADING, GET_NEWS, GET_NEWS_ERROR, GET_NEWS_SUCCESS,
     GET_PROFILE,
     GET_PROFILE_ERROR,
     GET_PROFILE_SUCCESS,
@@ -34,6 +34,20 @@ export const getStocksSuccess = ({products}) => ({
 export const getStocksError = response => ({
         type: GET_STOCKS_ERROR,
         payload: response,
+});
+
+export const getNews = () => ({
+    type: GET_NEWS
+});
+
+export const getNewsSuccess = ({data}) => ({
+    type: GET_NEWS_SUCCESS,
+    payload: data,
+});
+
+export const getNewsError = response => ({
+    type: GET_NEWS_ERROR,
+    payload: response,
 });
 
 export const setGenericLoading = () => ({

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import {createStructuredSelector} from 'reselect';
-import {getProfile, getStocks} from '../actions';
+import {getStocks} from '../actions';
 import {connect} from 'react-redux';
 import {selectGenericLoadingCalls, selectStocks} from '../selectors';
 import StockTable from '../../components/StockTable/StockTable';

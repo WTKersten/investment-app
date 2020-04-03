@@ -1,5 +1,6 @@
 import { takeLatest, takeEvery, call, put } from 'redux-saga/effects';
 import {
+    GET_NEWS, GET_NEWS_ERROR, GET_NEWS_SUCCESS,
     GET_PROFILE,
     GET_PROFILE_ERROR,
     GET_PROFILE_SUCCESS,
@@ -8,7 +9,7 @@ import {
     GET_STOCKS_SUCCESS
 } from "./constants";
 import {
-    clearGenericLoading,
+    clearGenericLoading, getNewsError, getNewsSuccess,
     getProfileError,
     getProfileSuccess,
     getStocksError,
@@ -19,15 +20,21 @@ import {
 export default function* watcherSaga() {
     yield takeLatest(GET_PROFILE, getProfileSaga);
     yield takeLatest(GET_STOCKS, getStocksSaga);
-
+    yield takeLatest(GET_NEWS, getNewsSaga);
 
     yield takeEvery(
-        [GET_PROFILE, GET_STOCKS],
+        [GET_PROFILE, GET_STOCKS, GET_NEWS],
         setLoading,
     );
 
-    yield takeEvery(
-        [GET_PROFILE_ERROR, GET_PROFILE_SUCCESS, GET_STOCKS_ERROR, GET_STOCKS_SUCCESS],
+    yield takeEvery([
+            GET_PROFILE_ERROR,
+            GET_PROFILE_SUCCESS,
+            GET_STOCKS_ERROR,
+            GET_STOCKS_SUCCESS,
+            GET_NEWS_ERROR,
+            GET_NEWS_SUCCESS,
+        ],
         clearLoading,
     );
 }
@@ -63,6 +70,22 @@ export function* getStocksSaga() {
         yield put(getStocksSuccess(response));
     } catch (err) {
         yield put(getStocksError(err));
+    }
+}
+
+export function* getNewsSaga() {
+    const requestUrl = `http://localhost:9000/api/news`;
+    try {
+        const res = yield call(fetch, requestUrl, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+        });
+        const response = yield res.json();
+        yield put(getNewsSuccess(response));
+    } catch (err) {
+        yield put(getNewsError(err));
     }
 }
 

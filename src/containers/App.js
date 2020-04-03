@@ -6,6 +6,7 @@ import HomeContainer from './HomeContainer/HomeContainer';
 import Header from '../components/Header/Header';
 import {Navigation} from '../components/styledComponents';
 import {Container, Row, Col} from 'reactstrap';
+import NewsContainer from './NewsContainer/NewsContainer';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                         <Navigation>
                             <NavLink exact to="/">Home</NavLink>
                             <NavLink to="/stocks">Stocks</NavLink>
+                            <NavLink to="/news">News</NavLink>
                         </Navigation>
                     </Col>
                 </Row>
@@ -34,6 +36,9 @@ function App() {
                                 </Route>
                                 <Route exact path="/stocks">
                                     <StocksContainer/>
+                                </Route>
+                                <Route exact path="/news">
+                                    <NewsContainer/>
                                 </Route>
                             </Switch>
                         </section>
