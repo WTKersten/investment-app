@@ -34,7 +34,7 @@ function StockTable({stocks}) {
     return(
         <>
             <h2>Stocks</h2>
-            <TableX>
+            <TableX responsive>
                 <TableHead>
                     <tr>
                         <TableHeader>ISIN</TableHeader>

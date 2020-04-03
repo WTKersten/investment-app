@@ -14,3 +14,7 @@ export const TableHeader = styled.th`
     padding-top: 16px;
     padding-bottom: 12px;
 `;
+
+export const TableCellAmount = styled.td`
+    white-space: nowrap;
+`;
