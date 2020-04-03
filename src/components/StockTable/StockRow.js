@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button} from 'reactstrap';
+import {ButtonX} from '../styledComponents';
 
 function StockRow({id, isin, name, closePrice, productType, handleClickRemoveRow}) {
     return (
@@ -9,7 +9,7 @@ function StockRow({id, isin, name, closePrice, productType, handleClickRemoveRow
             <td>{name}</td>
             <td>€ {closePrice}</td>
             <td>{productType}</td>
-            <td><Button onClick={() => handleClickRemoveRow(id)} >Remove</Button></td>
+            <td><ButtonX onClick={() => handleClickRemoveRow(id)} >Remove</ButtonX></td>
         </tr>
     )
 }

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import {Table} from 'reactstrap';
 
 export const TableX = styled(Table)`
-    color: #ffffff;
+    color: ${props => props.theme.colors.light};
 `;
 
 export const TableHead = styled.thead`
-    background-color: #BEB7A4;
+    background-color: ${props => props.theme.colors.secondary};
 `;
 
 export const TableHeader = styled.th`

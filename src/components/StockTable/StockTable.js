@@ -1,10 +1,10 @@
 import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
-import {Button} from 'reactstrap';
 import {TableHead, TableHeader, TableX} from './styled';
 import StockInputRow from './StockInputRow';
 import StockRow from './StockRow';
+import {ButtonX} from '../styledComponents';
 
 const getEmptyStockObject = () => ({isin: '', name: '', closePrice: '', productType: '', id: uuid()});
 
@@ -57,7 +57,7 @@ function StockTable({stocks}) {
                     <StockInputRow {...newStock} handleChange={handleChange}/>
                 </tbody>
             </TableX>
-            <Button primary onClick={handleClickAdd}>Add</Button>
+            <ButtonX primary onClick={handleClickAdd}>Add</ButtonX>
         </>
     )
 }

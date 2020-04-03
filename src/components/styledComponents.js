@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {Button} from 'reactstrap';
 export const Navigation = styled.div`
     a {
-        margin: 0 10px;
-        color: #db7093;
+        margin: 0 ${props => props.theme.spacing.medium};
+        color: ${props => props.theme.colors.primary};
     }
     
     a:hover {
-        color: #f73172!important;
+        color: ${props => props.theme.colors.darkPrimary};
     }
     
     a.active:after {
@@ -16,19 +17,17 @@ export const Navigation = styled.div`
 `;
 
 export const Loader = styled.span`
-    color: #e6af2e;
-    font-size: 18px;
-    margin-top: 16px;
+    font-size: ${props => props.theme.fontSizes.large};
+    margin-top: ${props => props.theme.spacing.large};
 `;
 
 
-export const Button = styled.button`
-    background: ${props => props.primary ? '#db7093' : '#ffffff'};
-    color: ${props => props.primary ? '#ffffff' : '#db7093'};
+export const ButtonX = styled(Button)`
+    background: ${({primary, theme}) => primary ? theme.colors.primary : theme.colors.light};
+    color: ${({primary, theme}) => primary ? theme.colors.light : theme.colors.primary};
     cursor: pointer;
-    font-size: 1em;
     padding: 0.25em 1em;
-    border: 2px solid palevioletred;
+    border: 2px solid ${props => props.theme.colors.white};
     border-radius: 3px;
 `;
 

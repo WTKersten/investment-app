@@ -7,10 +7,11 @@ import Header from '../components/Header/Header';
 import {Navigation} from '../components/styledComponents';
 import {Container, Row, Col} from 'reactstrap';
 import NewsContainer from './NewsContainer/NewsContainer';
+import Theme from './theme';
 
 function App() {
     return (
-        <>
+        <Theme>
             <GlobalStyle/>
             <Container>
                 <Row>
@@ -45,7 +46,7 @@ function App() {
                     </Col>
                 </Row>
             </Container>
-        </>
+        </Theme>
     );
 }
 
