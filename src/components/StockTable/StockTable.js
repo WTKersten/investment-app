@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import {TableHead, TableHeader, TableX} from './styled';
@@ -12,6 +12,17 @@ function StockTable({stocks}) {
 
     const [stockArr, setStockArr] = useState(stocks);
     const [newStock, setNewStock] = useState(getEmptyStockObject());
+    const [stockArrLength, setStockArrLenth] = useState(stockArr.length);
+    useEffect(() => {
+        setStockArrLenth(stockArr.length);
+        document.title = `(${stockArrLength + 1}) aandelen in uw portofolio`;
+    }, [stockArr.length, stockArrLength]);
+
+    useEffect(() => {
+        return () => {
+            document.title = 'Investment App';
+        };
+    }, []);
 
     const handleClickAdd = useCallback(() => {
         setStockArr(stockArr => [...stockArr, newStock]);
@@ -29,8 +40,6 @@ function StockTable({stocks}) {
         setNewStock({...newStock, [target.name]: target.value});
     }, [newStock]);
 
-
-
     return(
         <>
             <h2>Stocks</h2>
@@ -46,18 +55,20 @@ function StockTable({stocks}) {
                 </TableHead>
                 <tbody>
                     {stockArr.map((stock) => (
-                        <StockRow
-                            id={stock.id}
-                            isin={stock.isin}
-                            name={stock.name}
-                            closePrice={stock.closePrice}
-                            productType={stock.productType}
-                            handleClickRemoveRow={handleClickRemoveRow}/>
+                        <React.Fragment key={stock.id}>
+                            <StockRow
+                                id={stock.id}
+                                isin={stock.isin}
+                                name={stock.name}
+                                closePrice={stock.closePrice}
+                                productType={stock.productType}
+                                handleClickRemoveRow={handleClickRemoveRow}/>
+                        </React.Fragment>
                     ))}
                     <StockInputRow {...newStock} handleChange={handleChange}/>
                 </tbody>
             </TableX>
-            <ButtonX primary onClick={handleClickAdd}>Add</ButtonX>
+            <ButtonX primary="true" onClick={handleClickAdd}>Add</ButtonX>
         </>
     )
 }

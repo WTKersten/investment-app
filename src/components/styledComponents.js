@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import {Button} from 'reactstrap';
 export const Navigation = styled.div`
     a {
@@ -30,7 +29,3 @@ export const ButtonX = styled(Button)`
     border: 2px solid ${props => props.theme.colors.white};
     border-radius: 3px;
 `;
-
-Button.propTypes = {
-    primary: PropTypes.bool,
-};

@@ -5,7 +5,7 @@ import {TableCellAmount} from './styled';
 
 function StockRow({id, isin, name, closePrice, productType, handleClickRemoveRow}) {
     return (
-        <tr key={id}>
+        <tr>
             <td>{isin}</td>
             <td>{name}</td>
             <TableCellAmount>{`€ ${closePrice}`}</TableCellAmount>
@@ -19,7 +19,7 @@ StockRow.propTypes = {
     id: PropTypes.string.isRequired,
     isin: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    closePrice: PropTypes.string.isRequired,
+    closePrice: PropTypes.number.isRequired,
     productType: PropTypes.string.isRequired,
     handleClickRemoveRow: PropTypes.func.isRequired,
 };
