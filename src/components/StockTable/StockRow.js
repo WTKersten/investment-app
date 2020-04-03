@@ -19,7 +19,10 @@ StockRow.propTypes = {
     id: PropTypes.string.isRequired,
     isin: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    closePrice: PropTypes.number.isRequired,
+    closePrice: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]).isRequired,
     productType: PropTypes.string.isRequired,
     handleClickRemoveRow: PropTypes.func.isRequired,
 };
