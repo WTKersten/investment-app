@@ -44,10 +44,10 @@ function StockTable({stocks}) {
                         </tr>
                     ))}
                     <tr>
-                        <td><Input type="text" name="isin" value={newStock.isin} onChange={handleChange} /></td>
-                        <td><Input type="text" name="name" value={newStock.name} onChange={handleChange}/></td>
-                        <td><Input type="text" name="closePrice" value={newStock.closePrice} onChange={handleChange}/></td>
-                        <td><Input type="text" name="productType" value={newStock.productType} onChange={handleChange}/></td>
+                        <td><Input type="text" placeholder="ISIN" name="isin" value={newStock.isin} onChange={handleChange} /></td>
+                        <td><Input type="text" placeholder="Name" name="name" value={newStock.name} onChange={handleChange}/></td>
+                        <td><Input type="text" placeholder="Price" value={newStock.closePrice} onChange={handleChange}/></td>
+                        <td><Input type="text" placeholder="Product type" name="productType" value={newStock.productType} onChange={handleChange}/></td>
                     </tr>
                 </tbody>
             </TableX>
