@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
-import {Button, Input} from 'reactstrap';
+import {Button} from 'reactstrap';
 import {TableHead, TableHeader, TableX} from './styled';
 import StockInputRow from './StockInputRow';
 import StockRow from './StockRow';
@@ -18,10 +18,17 @@ function StockTable({stocks}) {
         setNewStock(getEmptyStockObject());
     }, [newStock]);
 
+    const handleClickRemoveRow = useCallback(id => {
+        const stockArrCopy = [...stockArr];
+        const stockIndexInArray = stockArr.findIndex(stock => stock.id === id);
+        stockArrCopy.splice(stockIndexInArray, 1);
+        setStockArr(stockArrCopy)
+    }, [stockArr]);
 
     const handleChange = useCallback(({ target }) => {
         setNewStock({...newStock, [target.name]: target.value});
     }, [newStock]);
+
 
 
     return(
@@ -34,6 +41,7 @@ function StockTable({stocks}) {
                         <TableHeader>Name</TableHeader>
                         <TableHeader>Price</TableHeader>
                         <TableHeader>Product type</TableHeader>
+                        <TableHeader/>
                     </tr>
                 </TableHead>
                 <tbody>
@@ -43,7 +51,8 @@ function StockTable({stocks}) {
                             isin={stock.isin}
                             name={stock.name}
                             closePrice={stock.closePrice}
-                            productType={stock.productType}/>
+                            productType={stock.productType}
+                            handleClickRemoveRow={handleClickRemoveRow}/>
                     ))}
                     <StockInputRow {...newStock} handleChange={handleChange}/>
                 </tbody>
