@@ -6,17 +6,17 @@ import createReducer from './reducer';
 export const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}, history) {
-
   const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const enhancers = [applyMiddleware(...middlewares)];
 
+  // eslint-disable-next-line no-undef
   const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 
   return createStore(
     createReducer,
-    {},
-      composeEnhancers(...enhancers),
+    initialState,
+    composeEnhancers(...enhancers),
   );
 }

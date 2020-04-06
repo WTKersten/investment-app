@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM  from 'react-dom';
-import { Provider } from 'react-redux'
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import configureStore, { sagaMiddleware } from './store';
@@ -15,7 +15,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 sagaMiddleware.run(saga);

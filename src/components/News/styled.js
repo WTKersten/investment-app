@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Card, CardSubtitle} from 'reactstrap';
+import { Card, CardSubtitle } from 'reactstrap';
 
 
 export const CardX = styled(Card)`
